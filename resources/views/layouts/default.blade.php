@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>@yield('title', 'Weibo App') - TB</title>
+    <title>@yield('title', 'Weibo AppKSS') - TBS</title>
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
   </head>
   <body>
