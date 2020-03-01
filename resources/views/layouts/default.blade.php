@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>@yield('title', 'Weibo App AX') - TBS111</title>
+    <title>@yield('title', 'Weibo') - TBS111</title>
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
   </head>
   <body>
@@ -15,6 +15,6 @@
         @include('layouts._footer')
       </div>
     </div>
-
+    <script src="{{ mix('js/app.js') }}"></script>
   </body>
 </html>
