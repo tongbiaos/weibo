@@ -14,10 +14,12 @@ class UsersTableSeeder extends Seeder
     {
         $users = factory(user::class)->times(50)->make();
         User::insert($users->makeVisible(['password','remember_token'])->toArray());
-
+        //获取数据库的第一个数据并修改
         $user = User::find(1);
-        $user->name = 'Summer';
-        $user->email = 'summer@example.com';
+        $user->name = 'tongbiaos';
+        $user->email = 'tongbiaos@163.com';
+        $user->password = bcrypt('123456');
+        $user->is_admin = true;
         $user->save();
     }
 }
