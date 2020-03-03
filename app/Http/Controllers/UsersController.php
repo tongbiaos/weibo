@@ -8,7 +8,25 @@ use Auth;
 
 class UsersController extends Controller
 {
+
+    public function __construct()
+    {
+        //不使用 Auth 中间件进行过滤
+        $this->middleware('auth', [
+            'except' => ['show', 'create', 'store', 'index']
+        ]);
+        //只让未登录用户访问注册页面
+        $this->middleware('guest', [
+            'only' => ['create']
+        ]);
+    }
     //
+    public function index(){
+        //$users = User::all();
+        $users = User::paginate(5);
+        return view('users.index',compact('users'));
+
+    }
     public function create() {
         return view('users.create');
     }
@@ -43,11 +61,13 @@ class UsersController extends Controller
     //用户修改
     public function edit(User $user)
     {
+        $this->authorize('update', $user);
         return view('users.edit', compact('user'));
     }
     //用户信息修改
     public function update(User $user, Request $request)
     {
+        $this->authorize('update', $user);
         $this->validate($request, [
             'name' => 'required|max:50',
             'password' => 'nullable|confirmed|min:6'
